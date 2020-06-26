@@ -1,38 +1,48 @@
 <html>
 <title>Profil</title>
-<link rel="stylesheet" type="text/css" href="{{ asset('/css/w3.css') }}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href={{ asset('/css/bootstrap.min.css')}}>
+<script src="{{ asset('js/jquery.min.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <style>
 body {font-family: 'Montserrat';background:#ecf0f1 74.5%;}
-body a {text-decoration: none;}
+/*body a {text-decoration: none;}*/
 table {border-spacing:0px;}
 .middle td {vertical-align:middle}
 </style>
 <body>
-    <table class="w3-bar w3-white w3-card" width="100%">
+    <table class="bg-white table shadow" width="100%">
         <tr>
-            <td class="">
-                <a href="/" class=" w3-bar-item w3-button w3-padding-16">Laravel</a>
+            <td>
+                <a href="/" class="btn">Laravel</a>
             </td>
         </tr>
     </table>
-    <table width="100%" class="w3-container" style="padding-top:20px;">
+    <table width="100%">
+    @if ($message = Session::get('sukses'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>{{ $message }}</strong>
+    </div>
+    @endif
         <tr>
-            <td>
-                <table class="w3-table w3-white w3-bordered w3-hoverable w3-text-teal" width="100%">
+            <td class="pt-3 pl-4 pr-4">
+                <table class="table table-hover table-light text-teal shadow-sm" width="100%">
                     <thead>
-                        <tr class="w3-teal">
-                            <th colspan="6" style="padding-left:25px;"><h3>Data <b>Mahasiswa</b></h3></th>
-                            <th colspan="2" class="w3-right-align"><a href="/new" class="w3-button w3-green w3-round-medium w3-padding-16">Tambah Data</a></th>
+                        <tr class="teal" style="height:70px">
+                            <th colspan="6" class="pb-0 pl-4 align-middle"><h3>Data <b>Mahasiswa</b></h3></th>
+                            <th colspan="2"><a href="/new" class="btn btn-success float-right p-2">Tambah Data</a></th>
                         </tr>
                         <tr>
-                            <th class="w3-padding-16" width="9%">NPM</th>
-                            <th class="w3-padding-16" width="15%">NAMA</th>
-                            <th class="w3-padding-16" width="20%">TEMPAT, TANGGAL LAHIR</th>
-                            <th class="w3-padding-16" width="8%">GENDER</th>
-                            <th class="w3-padding-16" width="8%">AGAMA</th>
-                            <th class="w3-padding-16" width="20%">ALAMAT</th>
-                            <th class="w3-padding-16" width="13%">NO. PONSEL</th>
-                            <th class="w3-padding-16" width="10%">AKSI</th>
+                            <th width="7%">NPM</th>
+                            <th width="15%">NAMA</th>
+                            <th width="20%">TEMPAT, TANGGAL LAHIR</th>
+                            <th width="8%">GENDER</th>
+                            <th width="8%">AGAMA</th>
+                            <th width="20%">ALAMAT</th>
+                            <th width="12%">NO. PONSEL</th>
+                            <th width="10%">AKSI</th>
                         </tr>
                     </thead>
                     <tbody class="middle">
@@ -46,9 +56,9 @@ table {border-spacing:0px;}
                             <td>{{$profile->alamat}}</td>
                             <td>{{$profile->ponsel}}</td>
                             <td>
-                                <h4>
-                                <a href="/{{$profile->id}}/edit" class="w3-text-yellow" title="Edit">&#9998;</a>&nbsp;
-                                <a href="/{{$profile->id}}/hapus" class="w3-text-red" onclick="return confirm('Hapus Data Ini ?')" title="Hapus">&#9938;</a>
+                                <h4 class="btn-group">
+                                <a href="/{{$profile->id}}/edit" class="btn btn-warning" title="Edit">&#9998;
+                                <a href="/{{$profile->id}}/hapus" class="btn btn-danger" onclick="return confirm('Hapus Data Ini ?')" title="Hapus">&otimes;</a>
                                 </h4>
                             </td>
                         </tr>

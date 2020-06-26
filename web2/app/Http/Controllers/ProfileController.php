@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -21,7 +22,7 @@ class ProfileController extends Controller
     public function tambah(Request $request)
     {
         \App\Profile::create($request->all());
-        return redirect('profile');
+        return redirect('profile')->with('sukses','Data berhasil di tambah');
     }
 
     public function edit($id)
@@ -34,14 +35,14 @@ class ProfileController extends Controller
     {
         $profile = \App\Profile::find($id);
         $profile->update($request->all());
-        return redirect('profile');
+        return redirect('profile')->with('sukses','Data berhasil di edit');
     }
 
     public function hapus($id)
     {
         $profile = \App\Profile::find($id);
         $profile->delete($profile);
-        return redirect('profile');
+        return redirect('profile')->with('sukses','Data berhasil di hapus');
     }
 
 }
