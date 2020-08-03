@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'-->
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
 <link rel="stylesheet" href={{ asset('/css/bootstrap.min.css')}}>
 <script src="{{ asset('js/jquery.min.js')}}"></script>
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
@@ -13,7 +14,7 @@ table {border-spacing:0px;}
 .middle td {vertical-align:middle}
 </style>
 <body>
-    <table class="bg-white table shadow" width="100%">
+    <table class="bg-white table shadow-sm" width="100%">
         <tr>
             <td>
                 <a href="/" class="btn">Laravel</a>
@@ -23,8 +24,9 @@ table {border-spacing:0px;}
     <table width="100%">
     @if ($message = Session::get('sukses'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong>{{ $message }}</strong>
+        <button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
+        <p>
+        <strong><i class="fa fa-check"></i> Sukses ! </strong>{{ $message }}</p>
     </div>
     @endif
         <tr>
@@ -33,7 +35,8 @@ table {border-spacing:0px;}
                     <thead>
                         <tr class="teal" style="height:70px">
                             <th colspan="6" class="pb-0 pl-4 align-middle"><h3>Data <b>Mahasiswa</b></h3></th>
-                            <th colspan="2"><a href="/new" class="btn btn-success float-right p-2">Tambah Data</a></th>
+                            <th><a href="/new" class="btn btn-success float-right p-2">Tambah Data</a></th>
+                            <th><a href="/profile/cetak_pdf" class="btn btn-primary p-2" target="_blank">Cetak Data</a></th>
                         </tr>
                         <tr>
                             <th width="7%">NPM</th>
@@ -57,10 +60,10 @@ table {border-spacing:0px;}
                             <td>{{$profile->alamat}}</td>
                             <td>{{$profile->ponsel}}</td>
                             <td>
-                                <h4 class="btn-group">
-                                <a href="/{{$profile->id}}/edit" class="btn btn-warning" title="Edit">&#9998;
-                                <a href="/{{$profile->id}}/hapus" class="btn btn-danger" onclick="return confirm('Hapus Data Ini ?')" title="Hapus">&otimes;</a>
-                                </h4>
+                                <i class="btn-group p-2">
+                                <a href="/{{$profile->id}}/edit" class="btn btn-warning" title="Edit"><i class="fa fa-pencil"></i>
+                                <a href="/{{$profile->id}}/hapus" class="btn btn-danger" onclick="return confirm('Hapus Data Ini ?')" title="Hapus"><i class="fa fa-trash"></i></a>
+                                </i>
                             </td>
                         </tr>
                         @endforeach

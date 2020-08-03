@@ -14,12 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('profile','ProfileController@index');
-Route::get('new','ProfileController@new');
-Route::post('tambah','ProfileController@tambah');
-Route::get('/{id}/edit','ProfileController@edit');
-Route::post('/{id}/update','ProfileController@update');
-Route::get('/{id}/hapus','ProfileController@hapus');
+Route::get('profile', 'ProfileController@index');
+Route::get('new', 'ProfileController@new');
+Route::post('tambah', 'ProfileController@tambah');
+Route::get('/{id}/edit', 'ProfileController@edit');
+Route::post('/{id}/update', 'ProfileController@update');
+Route::get('/{id}/hapus', 'ProfileController@hapus');
+Route::get('/profile', 'ProfileController@index');
+Route::get('/profile/cetak_pdf', 'ProfileController@cetak_pdf');
 
 Auth::routes();
 
